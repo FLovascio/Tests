@@ -28,7 +28,7 @@ end
 
 function integrateRK(problem::Array{Function},init::Array{Float64},t_range,tableau::ButcherTab)
 	T=collect(t_range)
-	τ=T[1]-T[2]
+	τ=T[2]-T[1]
 	solution=zeros(length(problem),length(T))
 	k_array=zeros(length(problem),length(tableau.c))
 	solution[:,1]=init
@@ -40,7 +40,7 @@ end
 
 function integrateRK(system::ivpSystem,t_range,tableau::ButcherTab)
 	T=collect(t_range)
-	τ=T[1]-T[2]
+	τ=T[2]-T[1]
 	problem=system.yDash
 	solution=zeros(length(problem),length(T))
 	k_array=zeros(length(problem),length(tableau.c))
